@@ -6,5 +6,5 @@ The first version of the code and bookmarklet was created by [Martin Popel](http
 ## Bookmarklet
 Add the following code to the bookmark url:
 ```javascript
-javascript: (function () {var jsCode = document.createElement('script');jsCode.setAttribute('src', 'https://raw.githubusercontent.com/kukas/treq-alignment-bookmarklet/main/align.js');document.body.appendChild(jsCode);}());
+javascript: (function () {var jsCode = document.createElement('script');jsCode.setAttribute('src', 'https://jirkabalhar.cz/treq-alignment-bookmarklet/align.js');document.body.appendChild(jsCode);}());
 ```
