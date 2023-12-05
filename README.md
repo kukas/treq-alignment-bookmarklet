@@ -1,5 +1,5 @@
 # treq-alignment-bookmarklet
-Bookmarklet for word alignment visualization in the Treq tool.
+Bookmarklet for word alignment visualization in the [Treq](https://treq.korpus.cz/) tool.
 
 The first version of the code and bookmarklet was created by [Martin Popel](https://ufal.mff.cuni.cz/martin-popel)
 
