@@ -1,15 +1,14 @@
 // First version was created by [Martin Popel](https://ufal.mff.cuni.cz/martin-popel)
 
 function detectLanguagePair(langNodeList) {
-  const extractText = node => node.textContent.trim();
-  const textsBetweenTags = Array.from(langNodeList).map(extractText);
+  const textsBetweenTags = [...langNodeList].map(x => x.innerText);
   const intercorpMapping = {
     "InterCorp v15 - Czech": "cs",
     "InterCorp v15 - Estonian": "et",
     "InterCorp v15 - Ukrainian": "uk",
     "InterCorp v15 - English": "en",
   }
-  let selectedLangs = textsBetweenTags.map(x => intercorpMapping[x] || x);
+  let selectedLangs = textsBetweenTags.map(x => intercorpMapping[x]);
   selectedLangs = selectedLangs.join("-");
   const supported = {
     "en-cs": { languagePair: "en-cs", reversed: false },
