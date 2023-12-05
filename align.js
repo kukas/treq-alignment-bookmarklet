@@ -44,19 +44,18 @@ async function alignJSON(src_p, trg_p, languagePair) {
       if (s_i < src_spans.length && t_i < trg_spans.length) {
         let s = src_spans[s_i];
         let t = trg_spans[t_i];
-        if (s.dataset.alignids) { s.dataset.alignids += " " + t.dataset.tokenid; }
-        else { s.dataset.alignids = t.dataset.tokenid; }
-        if (t.dataset.alignids) { t.dataset.alignids += " " + s.dataset.tokenid; }
-        else { t.dataset.alignids = s.dataset.tokenid; }
-      }
-    });
-    [...src_spans, ...trg_spans].forEach(el => {
-      let al_str = el.dataset.alignids;
-      if (al_str) {
-        let aligned = al_str.split("-").map(s => document.querySelector(`mark[data-tokenid="${s}"]`));
-        aligned.push(el);
-        el.addEventListener("mouseenter", e => { aligned.forEach(al => { al.style.backgroundColor = 'yellow'; }); });
-        el.addEventListener("mouseout", e => { aligned.forEach(al => { al.style.backgroundColor = 'transparent'; }); });
+        let mouseenterhandler = e => {
+          s.style.backgroundColor = 'yellow';
+          t.style.backgroundColor = 'yellow';
+        }
+        let mouseouthandler = e => {
+          s.style.backgroundColor = 'transparent';
+          t.style.backgroundColor = 'transparent';
+        }
+        s.addEventListener("mouseenter", mouseenterhandler);
+        t.addEventListener("mouseenter", mouseenterhandler);
+        s.addEventListener("mouseout", mouseouthandler);
+        t.addEventListener("mouseout", mouseouthandler);
       }
     });
   } catch (error) {
