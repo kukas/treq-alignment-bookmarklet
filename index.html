@@ -1,1 +1,19 @@
-Test github static web
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Treq bookmarklet</title>
+</head>
+
+<body>
+    Please add the following link to your bookmarks (drag and drop or right click -> Bookmark link):<br>
+
+    <a href="javascript: (function () {
+        var jsCode = document.createElement('script');
+        jsCode.setAttribute('src', 'https://kukas.github.io/treq-alignment-bookmarklet/align.js');
+        document.body.appendChild(jsCode);
+     }());">Align en-cs</a>
+</body>
+
+</html>
