@@ -7,13 +7,33 @@
 </head>
 
 <body>
-    Please add the following link to your bookmarks (drag and drop or right click -> Bookmark link):<br>
+    <p>Please add the following link to your bookmarks. You can use the following methods:</p>
+    <ul>
+        <li>Drag and drop the link into your bookmark panel (show/hide the bookmark panel by pressing Ctrl+Shift+B).
+        </li>
+        <li>Right click on the link and select "Bookmark link" or similar.</li>
+    </ul>
 
-    <a href="javascript: (function () {
-        var jsCode = document.createElement('script');
-        jsCode.setAttribute('src', 'https://kukas.github.io/treq-alignment-bookmarklet/align.js');
-        document.body.appendChild(jsCode);
-     }());">Align en-cs</a>
+    <p>
+        <b>This is the link</b>:
+        <a href="javascript: (function () {
+            var jsCode = document.createElement('script');
+            jsCode.setAttribute('src', 'https://kukas.github.io/treq-alignment-bookmarklet/align.js');
+            document.body.appendChild(jsCode);
+         }());">Treq word alignment</a>
+    <p>
+        <br>
+    </p>
+    The supported language pairs are:
+    </p>
+    <ul>
+        <li>cs-uk</li>
+        <li>cs-en</li>
+        <li>en-et</li>
+    </ul>
+    <p>
+        The bookmarklet supports both language pair directions.
+    </p>
 </body>
 
 </html>
