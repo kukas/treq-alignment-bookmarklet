@@ -7,24 +7,36 @@
 </head>
 
 <body>
+    <!-- <h1>Treq alignment bookmarklet</h1> -->
+    <h2>Installation</h2>
     <p>Please add the following link to your bookmarks using one of the following methods:</p>
     <ul>
         <li>Drag and drop the link into your bookmark panel (show/hide the bookmark panel by pressing Ctrl+Shift+B).
         </li>
         <li>Right click on the link and select "Bookmark link" or a similar option.</li>
     </ul>
-
     <p>
         <b>This is the link</b>:
         <a href="javascript: (function () {
             var jsCode = document.createElement('script');  
             jsCode.setAttribute('src', 'https://kukas.github.io/treq-alignment-bookmarklet/align.js');
             document.body.appendChild(jsCode);
-         }());">Treq word alignment</a>
+        }());">Treq word alignment</a>
     </p>
-    <br>
-    </p>
-    The supported language pairs are:
+    Prosím dodej tam ještě ty Testing links a přidej instrukci, že v Trequ musí kliknout na tu záložku.
+    Budu pak moct uživatele odkázat jen na https://kukas.github.io/treq-alignment-bookmarklet/ bez dalších instrukcí.
+    
+    <h2>Try it out!</h2>
+    <p>The bookmarklet is intended for use with <a href="https://treq.korpus.cz/" target="_blank">Treq</a>.</p>
+    <ol>
+        <li>On <a href="https://treq.korpus.cz/" target="_blank">Treq</a>, select a supported language pair such as Czech-English.</li>
+        <li>Write a query, for example "pes" and click on one of the English equivalents (for example: <a href="https://www.korpus.cz/kontext/view?maincorp=intercorp_v15_cs&viewmode=align&pagesize=40&attrs=word&attr_vmode=visible-kwic&base_viewattr=word&refs=%3Ddoc.id&q=~MK6eyS802iqW&cutoff=0" target="_blank">dog</a>)</li>
+        <li>Now you are in <i>Kontext</i> and are ready to use the bookmarklet.</li>
+        <li>Click on the "Treq word alignment" bookmark <b>in your bookmark toolbar</b> when having the <i>Kontext</i> window open.</li>
+        <li>Now move your mouse over some of the words in the results, the alignment should appear as yellow highlights.</li>
+    </ol>
+    <p>
+        The supported language pairs are:
     </p>
     <ul>
         <li>cs-uk</li>
