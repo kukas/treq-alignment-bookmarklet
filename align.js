@@ -2,26 +2,28 @@
 
 function detectLanguagePair(langNodeList) {
   const textsBetweenTags = [...langNodeList].map(x => x.innerText);
+  const supportedLangs = ["uk", "cs", "fr", "de", "es", "pl", "ru", "en"]
   const intercorpMapping = {
-    "InterCorp v15 - Czech": "cs",
-    "InterCorp v15 - Estonian": "et",
     "InterCorp v15 - Ukrainian": "uk",
+    "InterCorp v15 - Czech": "cs",
+    "InterCorp v15 - French": "fr",
+    "InterCorp v15 - German": "de",
+    "InterCorp v15 - Spanish": "es",
+    "InterCorp v15 - Polish": "pl",
+    "InterCorp v15 - Russian": "ru",
     "InterCorp v15 - English": "en",
   }
   let selectedLangs = textsBetweenTags.map(x => intercorpMapping[x]);
+  // check if both languages are supported
+  for (let lang of selectedLangs) {
+    if (lang === undefined) {
+      return false;
+    }
+  }
+  // convert the language pair to string
   selectedLangs = selectedLangs.join("-");
-  const supported = {
-    "en-cs": { languagePair: "en-cs", reversed: false },
-    "cs-en": { languagePair: "en-cs", reversed: true },
-    "cs-uk": { languagePair: "cs-uk", reversed: false },
-    "uk-cs": { languagePair: "cs-uk", reversed: true },
-    "en-et": { languagePair: "en-et", reversed: false },
-    "et-en": { languagePair: "en-et", reversed: true },
-  }
-  if (supported[selectedLangs]) {
-    return supported[selectedLangs];
-  }
-  return false;
+
+  return selectedLangs;
 }
 
 async function alignJSON(src_p, trg_p, languagePair) {
@@ -70,12 +72,7 @@ console.log(detectedLanguagePair);
 if (detectedLanguagePair) {
   var src_pars = document.querySelectorAll(".par.maincorp");
   var trg_pars = document.querySelectorAll(".par:not(.maincorp)");
-  if (detectedLanguagePair["reversed"]) {
-    let temp = src_pars;
-    src_pars = trg_pars;
-    trg_pars = temp;
-  }
-  src_pars.forEach((src_p, i) => { alignJSON(src_p, trg_pars[i], detectedLanguagePair["languagePair"]); });
+  src_pars.forEach((src_p, i) => { alignJSON(src_p, trg_pars[i], detectedLanguagePair); });
 }
 else {
   alert("Unsupported language pair.");
