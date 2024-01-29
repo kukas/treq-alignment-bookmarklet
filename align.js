@@ -33,14 +33,14 @@ async function alignJSON(src_p, trg_p, languagePair) {
     "trg_tokens": [...trg_spans].map(x => x.innerText)
   };
   try {
-    const response = await fetch("https://quest.ms.mff.cuni.cz/ptakopet-mt380/align/" + languagePair, {
+    const response = await fetch("https://lindat.cz/services/text-aligner/align/" + languagePair, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    result.alignment.split(" ").forEach((al) => {
-      let [s_i, t_i] = al.split("-").map(x => parseInt(x));
+    result.alignment.forEach((al) => {
+      let [s_i, t_i] = al;
       if (s_i < src_spans.length && t_i < trg_spans.length) {
         let s = src_spans[s_i];
         let t = trg_spans[t_i];
